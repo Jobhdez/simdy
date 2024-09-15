@@ -7,7 +7,7 @@
 void matrix_add(const float* left, const float* right, float* result, ptrdiff_t rows, ptrdiff_t cols) {
     const ptrdiff_t size = rows * cols;
     ptrdiff_t i = 0;
-    for (; i + 7 < size; i += 8) {
+    for (; i + 8 < size; i += 8) {
         __m256 left_vec = _mm256_loadu_ps(left + i);
         __m256 right_vec = _mm256_loadu_ps(right + i);
         __m256 res_vec = _mm256_add_ps(left_vec, right_vec);
